@@ -6,7 +6,7 @@
 
 ### Используемый стэк
 
-<img title="Python" src="./image/python.png" height="40" width="40"/> <img title="Pytest" src="./image/pytest.png" height="40" width="40"/> <img title="Pycharm" src="./image/pycharm.png" height="40" width="40"/> <img title="Jenkins" src="./image/jenkins.png" height="40" width="40"/> <img title="GitHub" src="./image/github.png" height="40" width="40"/> <img title="Allure Report" src="./image/allure_report.png" height="40" width="40"/> <img title="Allure TestOps" src="./image/allureTestOps.png" height="40" width="40"/><img title="Telegram" src="./image/telegram.png" height="40" width="40"/> 
+<img title="Python" src="./litres/image/python.png" height="40" width="40"/> <img title="Pytest" src="./litres/image/pytest.png" height="40" width="40"/> <img title="Pycharm" src="./litres/image/pycharm.png" height="40" width="40"/> <img title="Jenkins" src="./litres/image/jenkins.png" height="40" width="40"/> <img title="GitHub" src="./litres/image/github.png" height="40" width="40"/> <img title="Allure Report" src="./litres/image/allure_report.png" height="40" width="40"/> <img title="Allure TestOps" src="./litres/image/allureTestOps.png" height="40" width="40"/><img title="Telegram" src="./litres/image/telegram.png" height="40" width="40"/> 
 
 ----
 
@@ -37,7 +37,7 @@
 
 На странице с общими результатами мы можем увидеть общее количество тестов, сколько из них были успешными и сколько не успешными
 
-![Allure_report_example](./litres/image/allure_report.png)
+![Allure_report_example](./litres/image/allure_report_result.png)
 
 #### Отчет прохождения теста
 
@@ -52,6 +52,6 @@
 
 После выполнения автотестов, запущенных через Jenkins, также придёт уведомление в Telegram_bot об итогах тестирования
 
-![allert_bot](./litres/image/allert bot.png)
+![allert_bot](./litres/image/allert_bot.png)
 
 ----
