@@ -2,7 +2,7 @@
 
 > <a target="_blank" href="https://www.litres.ru/">Ссылка на сайт</a>
 
-![Homepage](image/Homepage.png)
+![Homepage](./litres/image/Homepage.png)
 
 ### Используемый стэк
 
