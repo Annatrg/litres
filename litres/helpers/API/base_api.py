@@ -5,6 +5,9 @@ import allure
 import requests
 from requests import Response
 
+from litres.utils.data import load_schema
+
+
 
 class BaseApi:
 
@@ -38,6 +41,7 @@ class BaseApi:
         return result
 
     def add_book_in_basket(self, api_url, book_id):
+        add_book_schema = load_schema('add_book_in_basket.json')
         endpoint = '/cart/arts/add'
         body = {"art_ids": [book_id]}
         result: Response = requests.put(url=f'{api_url}{endpoint}', headers={'Content-Type': 'application/json'},
@@ -45,9 +49,8 @@ class BaseApi:
         with allure.step('Проверить, что API возвращает 200 код ответа'):
             assert result.status_code == 200
         with allure.step('Проверить схему ответа'):
-            with open('../litres/helpers/schemas/add_book_in_basket.json') as file:
-                schema = json.load(file)
-                jsonschema.validate(result.json(), schema), f'Схема ответа не соответствует ожидаемой'
+            add_book_result = result.json()
+            jsonschema.validate(add_book_result, add_book_schema)
         return result
 
     def delete_book_in_basket(self, api_url, book_id):
@@ -59,20 +62,23 @@ class BaseApi:
             assert result.status_code == 204
         with allure.step('Проверить, что нет тела ответа'):
             assert not result.content
+
+        print(result)
         return result
 
     def get_basket(self, api_url):
+        get_basket_schema = load_schema('get_basket.json')
         endpoint = '/cart/status'
         result: Response = requests.get(url=f'{api_url}{endpoint}')
         with allure.step('что API возвращает 200 код ответа'):
             assert result.status_code == 200
         with allure.step('Проверить схему ответа'):
-            with open('../litres/helpers/schemas/get_basket.json') as file:
-                schema = json.load(file)
-                jsonschema.validate(result.json(), schema), f'Схема ответа не соответствует ожидаемой'
+            get_basket_result = result.json()
+            jsonschema.validate(get_basket_result, get_basket_schema)
         return result
 
     def search_book(self, api_url, key_word):
+        search_book_schema = load_schema('get_basket.json')
         endpoint = '/search/suggestions'
         query_params = f'q={key_word}'
         result: Response = requests.get(url=f'{api_url}{endpoint}?{query_params}')
@@ -81,7 +87,6 @@ class BaseApi:
         with allure.step('Проверить, что в ответе содержится ключевая фраза'):
             assert 'мой театр' in result.text
         with allure.step('Проверить схему ответа'):
-            with open('../litres/helpers/schemas/search.json') as file:
-                schema = json.load(file)
-                jsonschema.validate(result.json(), schema), f'Схема ответа не соответствует ожидаемой'
+            search_book_result = result.json()
+            jsonschema.validate(search_book_result, search_book_schema)
         return result
