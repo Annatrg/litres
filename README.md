@@ -28,7 +28,7 @@
 
 После прохождения автотестов в Build History будет доступен отчет
 
-![Jenkins build](./image/Build.png)
+![Jenkins build](./litres/image/Build.png)
 
 ----
 
@@ -37,13 +37,13 @@
 
 На странице с общими результатами мы можем увидеть общее количество тестов, сколько из них были успешными и сколько не успешными
 
-![Allure_report_example](./image/allure_report.png)
+![Allure_report_example](./litres/image/allure_report.png)
 
 #### Отчет прохождения теста
 
 В отчете для каждого кейса доступны 4 приложения. Среди них URL запроса, метод, тело запроса и куки 
 
-![Allure_suites_test](./image/allure_suites.png)
+![Allure_suites_test](./litres/image/allure_suites.png)
 
 
 ----
@@ -52,6 +52,6 @@
 
 После выполнения автотестов, запущенных через Jenkins, также придёт уведомление в Telegram_bot об итогах тестирования
 
-![allert_bot](./image/allert bot.png)
+![allert_bot](./litres/image/allert bot.png)
 
 ----
