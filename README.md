@@ -4,6 +4,20 @@
 
 ![Homepage](./litres/image/Homepage.png)
 
+### Список проверок:
+* Поиск книг по названию или автору
+* Добавление книги в Отложенные
+* Удаление книги из Отложенных товаров
+* Добавление книги в корзину
+* Удаление книги из корзины 
+
+### Особенности проекта:
+* Проверки проводятся для неавторизованного пользователя
+* В телеграм приходят оповещения о результатах прохождения тестов
+* Сборка проекта осуществляется через Jenkins 
+* Отчеты в Allure Report
+----
+
 ### Используемый стэк
 
 <img title="Python" src="./litres/image/python.png" height="40" width="40"/> <img title="Pytest" src="./litres/image/pytest.png" height="40" width="40"/> <img title="Pycharm" src="./litres/image/pycharm.png" height="40" width="40"/> <img title="Jenkins" src="./litres/image/jenkins.png" height="40" width="40"/> <img title="GitHub" src="./litres/image/github.png" height="40" width="40"/> <img title="Allure Report" src="./litres/image/allure_report.png" height="40" width="40"/> <img title="Allure TestOps" src="./litres/image/allureTestOps.png" height="40" width="40"/><img title="Telegram" src="./litres/image/telegram.png" height="40" width="40"/> 
