@@ -30,10 +30,9 @@ class BaseApi:
 
     def delete_book_in_wishlist(self, api_url, book_id):
         endpoint = '/wishlist/arts/'
-        result: Response = requests.delete(url=f'{api_url}{endpoint}{book_id}')
+        result: Response = requests.delete(url=f'{api_url}{endpoint}{book_id}', headers={'Wishlist': f'{book_id}'})
 
         with allure.step('Проверить, что API возвращает 204 код ответа'):
-            print(result)
             assert result.status_code == 204
         with allure.step('Проверить, что нет тела ответа'):
             assert not result.content
@@ -63,7 +62,6 @@ class BaseApi:
         with allure.step('Проверить, что нет тела ответа'):
             assert not result.content
 
-        print(result)
         return result
 
     def get_basket(self, api_url):

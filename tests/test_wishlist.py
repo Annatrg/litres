@@ -51,7 +51,7 @@ class TestWishlist:
         with allure.step('Получить id книги из раздела Рекомендации для вас'):
             book_id = base_api.get_available_book(api_url)
         with allure.step('Добавить книгу в Отложенные'):
-            added_to_wishlist: base_api.add_book_in_wishlist(api_url, book_id)
+            base_api.add_book_in_wishlist(api_url, book_id)
         with allure.step('Отправить запрос для удаления добавленной книги из Отложенных'):
             result = base_api.delete_book_in_wishlist(api_url, book_id)
 
