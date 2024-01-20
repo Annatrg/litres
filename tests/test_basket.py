@@ -17,7 +17,7 @@ class TestBasket:
     @allure.label('API')
     @allure.tag('basket')
     @allure.severity('critical')
-    def test_add_to_basket(self, api_url):
+    def test_add_book_to_basket(self, api_url):
         with allure.step('Получить id книги из раздела Рекомендации для вас'):
             book_id = base_api.get_available_book(api_url)
         with allure.step('Добавить книгу в корзину'):
@@ -47,13 +47,13 @@ class TestBasket:
     @allure.label('API')
     @allure.tag('basket')
     @allure.severity('critical')
-    def test_add_to_basket(self, api_url):
+    def test_delete_book_from_basket(self, api_url):
         with allure.step('Получить id книги из раздела Рекомендации для вас'):
             book_id = base_api.get_available_book(api_url)
         with allure.step('Добавить книгу в корзину неавторизованным пользователем'):
-            added_to_basket: base_api.add_book_in_basket(api_url, book_id)
+            base_api.add_book_in_basket(api_url, book_id)
         with allure.step('Удалить книгу из корзины неавторизованным пользователем'):
-            result: base_api.delete_book_in_basket(api_url, book_id)
+            result = base_api.delete_book_in_basket(api_url, book_id)
 
         allure.attach(body=result.request.url,
                       name="Request url",

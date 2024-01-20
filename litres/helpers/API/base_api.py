@@ -12,11 +12,11 @@ class BaseApi:
         endpoint = '/arts/personal-recommendations'
         book_list: Response = requests.get(api_url + endpoint)
         book_id = book_list.json().get('payload').get("data")[0].get('id')
-        return str(book_id)
+        return int(book_id)
 
     def add_book_in_wishlist(self, api_url, book_id):
         endpoint = '/wishlist/arts/'
-        result: Response = requests.put(api_url + endpoint + f'{book_id}')
+        result: Response = requests.put(url=f'{api_url}{endpoint}{book_id}')
 
         with allure.step('Проверить, что API возвращает 204 код ответа'):
             assert result.status_code == 204
@@ -27,8 +27,10 @@ class BaseApi:
 
     def delete_book_in_wishlist(self, api_url, book_id):
         endpoint = '/wishlist/arts/'
-        result: Response = requests.delete(url=f'{api_url}{endpoint}' + f'{book_id}')
+        result: Response = requests.delete(url=f'{api_url}{endpoint}{book_id}')
+
         with allure.step('Проверить, что API возвращает 204 код ответа'):
+            print(result)
             assert result.status_code == 204
         with allure.step('Проверить, что нет тела ответа'):
             assert not result.content
@@ -37,13 +39,13 @@ class BaseApi:
 
     def add_book_in_basket(self, api_url, book_id):
         endpoint = '/cart/arts/add'
-        book = int(book_id)
-        body = {"art_ids": [book]}
-        result: Response = requests.put(url=f'{api_url}{endpoint}', data=body)
+        body = {"art_ids": [book_id]}
+        result: Response = requests.put(url=f'{api_url}{endpoint}', headers={'Content-Type': 'application/json'},
+                                        data=json.dumps(body))
         with allure.step('Проверить, что API возвращает 200 код ответа'):
             assert result.status_code == 200
         with allure.step('Проверить схему ответа'):
-            with open('C:/Users/annaa/PycharmProjects/litres/litres/helpers/schemas/add_book_in_basket.json') as file:
+            with open('../litres/helpers/schemas/add_book_in_basket.json') as file:
                 schema = json.load(file)
                 jsonschema.validate(result.json(), schema), f'Схема ответа не соответствует ожидаемой'
         return result
@@ -52,8 +54,8 @@ class BaseApi:
         endpoint = '/cart/arts/remove'
         book = int(book_id)
         body = {"art_ids": [book]}
-        result: Response = requests.put(url=f'{api_url}{endpoint}', data=body)
-        with allure.step('Проверить, что API возвращает 200 код ответа'):
+        result: Response = requests.put(url=f'{api_url}{endpoint}', data=json.dumps(body))
+        with allure.step('Проверить, что API возвращает 204 код ответа'):
             assert result.status_code == 204
         with allure.step('Проверить, что нет тела ответа'):
             assert not result.content
@@ -65,7 +67,7 @@ class BaseApi:
         with allure.step('что API возвращает 200 код ответа'):
             assert result.status_code == 200
         with allure.step('Проверить схему ответа'):
-            with open('C:/Users/annaa/PycharmProjects/litres/litres/helpers/schemas/get_basket.json') as file:
+            with open('../litres/helpers/schemas/get_basket.json') as file:
                 schema = json.load(file)
                 jsonschema.validate(result.json(), schema), f'Схема ответа не соответствует ожидаемой'
         return result
@@ -79,7 +81,7 @@ class BaseApi:
         with allure.step('Проверить, что в ответе содержится ключевая фраза'):
             assert 'мой театр' in result.text
         with allure.step('Проверить схему ответа'):
-            with open('C:/Users/annaa/PycharmProjects/litres/litres/helpers/schemas/search.json') as file:
+            with open('../litres/helpers/schemas/search.json') as file:
                 schema = json.load(file)
                 jsonschema.validate(result.json(), schema), f'Схема ответа не соответствует ожидаемой'
         return result
