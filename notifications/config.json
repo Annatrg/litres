@@ -4,7 +4,7 @@
     "project": "ptsecurity",
     "environment": "PROD",
     "comment": "comment @snowmustgoon",
-    "reportLink": "https://jenkins.autotests.cloud/job/test-qa_guru_15/22/allure/",
+    "reportLink": "https://jenkins.autotests.cloud/job/litres/1/allure/",
     "language": "en",
     "allureFolder": "allure-report",
     "enableChart": true
