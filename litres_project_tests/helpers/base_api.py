@@ -87,3 +87,6 @@ class BaseApi:
             search_book_result = result.json()
             jsonschema.validate(search_book_result, search_book_schema)
         return result
+
+
+base_api = BaseApi()

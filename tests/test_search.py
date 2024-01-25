@@ -1,11 +1,7 @@
-import json
-import logging
 import allure
-from allure_commons.types import AttachmentType
 
-from litres_project_tests.helpers.base_api import BaseApi
-
-base_api = BaseApi()
+from litres_project_tests.helpers.base_api import base_api
+from litres_project_tests.helpers.logging_and_attach import log_and_attach_allure_info
 
 
 @allure.epic('API Поиска')
@@ -21,22 +17,4 @@ class TestSearch:
         with allure.step('Отправить поисковый запрос'):
             key_word = 'Мой театр'
             result = base_api.search_book(api_url, key_word)
-
-        allure.attach(body=result.request.url,
-                      name="Request url",
-                      attachment_type=AttachmentType.TEXT)
-        allure.attach(body=result.request.method,
-                      name="Request method",
-                      attachment_type=AttachmentType.TEXT)
-        allure.attach(body=json.dumps(result.request.body, indent=4, ensure_ascii=True),
-                      name="Request body",
-                      attachment_type=AttachmentType.JSON,
-                      extension="json")
-        allure.attach(body=str(result.cookies),
-                      name="Response cookies",
-                      attachment_type=AttachmentType.TEXT,
-                      extension="txt")
-        logging.info(result.request.url)
-        logging.info(result.status_code)
-        logging.info(result.cookies)
-        logging.info(result.text)
+        log_and_attach_allure_info(result)
