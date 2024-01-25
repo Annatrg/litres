@@ -1,9 +1,7 @@
 import allure
 
-from litres_project_tests.helpers.base_api import BaseApi
+from litres_project_tests.helpers.base_api import base_api
 from litres_project_tests.helpers.logging_and_attach import log_and_attach_allure_info
-
-base_api = BaseApi()
 
 
 @allure.epic('API Корзины')
