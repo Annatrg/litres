@@ -89,4 +89,4 @@ class BaseApi:
         return result
 
 
-base_api = BaseApi()
+base = BaseApi()
