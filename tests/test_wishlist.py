@@ -22,9 +22,6 @@ class TestWishlist:
             result = base_api.add_book_in_wishlist(api_url, book_id)
         log_and_attach_allure_info(result)
 
-
-
-
     @allure.title('Удаление неавторизованным пользователем книги из Отложенные')
     @allure.feature('Неавторизованный пользователь')
     @allure.label('API')

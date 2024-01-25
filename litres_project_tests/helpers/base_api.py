@@ -8,7 +8,6 @@ from requests import Response
 from litres_project_tests.utils.schema_utils import load_schema
 
 
-
 class BaseApi:
 
     def get_available_book(self, api_url):

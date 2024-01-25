@@ -3,6 +3,7 @@ import logging
 import allure
 from allure_commons.types import AttachmentType
 
+
 def log_and_attach_allure_info(result):
     allure.attach(body=result.request.url,
                   name="Request url",
