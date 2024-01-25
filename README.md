@@ -2,7 +2,7 @@
 
 > <a target="_blank" href="https://www.litres.ru/">Ссылка на сайт</a>
 
-![Homepage](./litres/image/Homepage.png)
+![Homepage](image/Homepage.png)
 
 ### Список проверок:
 * Поиск книг по названию или автору
@@ -20,7 +20,7 @@
 
 ### Используемый стэк
 
-<img title="Python" src="./litres/image/python.png" height="40" width="40"/> <img title="Pytest" src="./litres/image/pytest.png" height="40" width="40"/> <img title="Pycharm" src="./litres/image/pycharm.png" height="40" width="40"/> <img title="Jenkins" src="./litres/image/jenkins.png" height="40" width="40"/> <img title="GitHub" src="./litres/image/github.png" height="40" width="40"/> <img title="Allure Report" src="./litres/image/allure_report.png" height="40" width="40"/> <img title="Allure TestOps" src="./litres/image/allureTestOps.png" height="40" width="40"/><img title="Telegram" src="./litres/image/telegram.png" height="40" width="40"/> 
+<img title="Python" src="./image/python.png" height="40" width="40"/> <img title="Pytest" src="./image/pytest.png" height="40" width="40"/> <img title="Pycharm" src="./image/pycharm.png" height="40" width="40"/> <img title="Jenkins" src="./image/jenkins.png" height="40" width="40"/> <img title="GitHub" src="./image/github.png" height="40" width="40"/> <img title="Allure Report" src="./image/allure_report.png" height="40" width="40"/> <img title="Allure TestOps" src="./image/allureTestOps.png" height="40" width="40"/><img title="Telegram" src="./image/telegram.png" height="40" width="40"/> 
 
 ----
 
@@ -42,7 +42,7 @@
 
 После прохождения автотестов в Build History будет доступен отчет
 
-![Jenkins build](./litres/image/Build.png)
+![Jenkins build](image/Build.png)
 
 ----
 
@@ -51,13 +51,13 @@
 
 На странице с общими результатами мы можем увидеть общее количество тестов, сколько из них были успешными и сколько не успешными
 
-![Allure_report_example](./litres/image/allure_report_result.png)
+![Allure_report_example](image/allure_report_result.png)
 
 #### Отчет прохождения теста
 
 В отчете для каждого кейса доступны 4 приложения. Среди них URL запроса, метод, тело запроса и куки 
 
-![Allure_suites_test](./litres/image/allure_suites.png)
+![Allure_suites_test](image/allure_suites.png)
 
 
 ----
@@ -66,6 +66,6 @@
 
 После выполнения автотестов, запущенных через Jenkins, также придёт уведомление в Telegram_bot об итогах тестирования
 
-![allert_bot](./litres/image/allert_bot.png)
+![allert_bot](image/allert_bot.png)
 
 ----

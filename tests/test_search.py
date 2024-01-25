@@ -3,7 +3,7 @@ import logging
 import allure
 from allure_commons.types import AttachmentType
 
-from litres.helpers.API.base_api import BaseApi
+from litres_project_tests.helpers.base_api import BaseApi
 
 base_api = BaseApi()
 

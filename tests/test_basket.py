@@ -1,9 +1,7 @@
-import json
-import logging
 import allure
-from allure_commons.types import AttachmentType
 
-from litres.helpers.API.base_api import BaseApi
+from litres_project_tests.helpers.base_api import BaseApi
+from litres_project_tests.helpers.logging_and_attach import log_and_attach_allure_info
 
 base_api = BaseApi()
 
@@ -22,25 +20,7 @@ class TestBasket:
             book_id = base_api.get_available_book(api_url)
         with allure.step('Добавить книгу в корзину'):
             result = base_api.add_book_in_basket(api_url, book_id)
-
-        allure.attach(body=result.request.url,
-                      name="Request url",
-                      attachment_type=AttachmentType.TEXT)
-        allure.attach(body=result.request.method,
-                      name="Request method",
-                      attachment_type=AttachmentType.TEXT)
-        allure.attach(body=json.dumps(result.request.body, indent=4, ensure_ascii=True),
-                      name="Request body",
-                      attachment_type=AttachmentType.JSON,
-                      extension="json")
-        allure.attach(body=str(result.cookies),
-                      name="Response cookies",
-                      attachment_type=AttachmentType.TEXT,
-                      extension="txt")
-        logging.info(result.request.url)
-        logging.info(result.status_code)
-        logging.info(result.cookies)
-        logging.info(result.text)
+        log_and_attach_allure_info(result)
 
     @allure.title('Удаление книги из корзины неавторизованным пользователем')
     @allure.feature('Неавторизованный пользователь')
@@ -54,22 +34,4 @@ class TestBasket:
             base_api.add_book_in_basket(api_url, book_id)
         with allure.step('Удалить книгу из корзины неавторизованным пользователем'):
             result = base_api.delete_book_in_basket(api_url, book_id)
-
-        allure.attach(body=result.request.url,
-                      name="Request url",
-                      attachment_type=AttachmentType.TEXT)
-        allure.attach(body=result.request.method,
-                      name="Request method",
-                      attachment_type=AttachmentType.TEXT)
-        allure.attach(body=json.dumps(result.request.body, indent=4, ensure_ascii=True),
-                      name="Request body",
-                      attachment_type=AttachmentType.JSON,
-                      extension="json")
-        allure.attach(body=str(result.cookies),
-                      name="Response cookies",
-                      attachment_type=AttachmentType.TEXT,
-                      extension="txt")
-        logging.info(result.request.url)
-        logging.info(result.status_code)
-        logging.info(result.cookies)
-        logging.info(result.text)
+        log_and_attach_allure_info(result)
